@@ -30,7 +30,6 @@ public class SingleSearch_StepDefinitions {
         BrowserUtils.waitFor(3);
        // String expectedTitle=job+" job in "+city;
 
-
         basePage.whereBox.sendKeys(city);
         BrowserUtils.waitFor(3);
     }
@@ -45,11 +44,12 @@ public class SingleSearch_StepDefinitions {
 
     @Then("user sees {string} and {string} results successfully")
     public void userSeesAndResultsSuccessfully(String job, String city) {
-       String actualTitle=Driver.getDriver().getTitle();
-       System.out.println("actualTitle = " + actualTitle);//QA Tester Jobs in Liverpool - 2022 | Indeed.com
+       String actualTitle=Driver.getDriver().getTitle().toLowerCase();
+       System.out.println("actualTitle = " + actualTitle);
        BrowserUtils.waitFor(3);
 
-       Assert.assertTrue(actualTitle.contains(city));
+       Assert.assertTrue(actualTitle.contains(city.toLowerCase()));
+       Assert.assertTrue(actualTitle.contains(job.toLowerCase()));
 
 
 
