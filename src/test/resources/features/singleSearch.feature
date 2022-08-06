@@ -23,7 +23,7 @@ Feature: User wants to search single job
     Given user opens indeed home page
     When user inputs "<job>" to What and "<city>" to Where boxes
     And user clicks Find jobs button
-    And user selects 50 miles from dropdown
+    And user selects 100 miles from dropdown
     Then user sees number of job results successfully
 
     Examples:

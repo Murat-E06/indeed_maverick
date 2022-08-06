@@ -72,8 +72,12 @@ public class SingleSearch_StepDefinitions {
     public void user_selects_miles_from_dropdown(Integer miles) {
         BrowserUtils.waitFor(3);
         basePage.radiusButton.click();
-        BrowserUtils.waitForClickablility(basePage.radiusList.get(6),3);
-        basePage.radiusList.get(6).click();
+        //BrowserUtils.waitForClickablility(basePage.radiusList.get(6),3);
+        //basePage.radiusList.get(6).click();
+
+        System.out.println("miles = " + miles);
+        BrowserUtils.waitForClickablility(basePage.getRadiusFilter(miles),3);
+        basePage.getRadiusFilter(miles).click();
 
     }
 }

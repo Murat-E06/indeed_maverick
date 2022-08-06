@@ -32,6 +32,30 @@ public class BasePage {
     public List<WebElement> radiusList;
 
 
+    public WebElement getRadiusFilter(int radius){
+
+        System.out.println(radius);
+
+        switch (radius){
+            case 0 :
+                return radiusList.get(0);
+            case 5 :
+                return radiusList.get(1);
+            case 10 :
+                return radiusList.get(2);
+            case 15 :
+                return radiusList.get(3);
+            case 25 :
+                return radiusList.get(4);
+            case 50 :
+                return radiusList.get(5);
+            case 100 :
+                return radiusList.get(6);
+            default:
+                System.out.println("wrong radius");
+                return null;
+        }
+    }
 
 
 
