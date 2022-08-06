@@ -52,10 +52,28 @@ public class SingleSearch_StepDefinitions {
        Assert.assertTrue(actualTitle.contains(job.toLowerCase()));
 
 
+    }
 
+    @Then("user sees number of job results successfully")
+    public void user_sees_number_of_job_results_successfully() {
 
+        String numberOfJobText = basePage.numberOfJobs.getText();
+        //Page 1 of 12 jobs
+        String [] words = numberOfJobText.split(" ");
 
+        System.out.println("Number of jobs = " + words[3]);
 
+        Assert.assertTrue(basePage.numberOfJobs.isDisplayed());
+        Assert.assertFalse(words[3].startsWith("0"));
+
+    }
+
+    @When("user selects {int} miles from dropdown")
+    public void user_selects_miles_from_dropdown(Integer miles) {
+        BrowserUtils.waitFor(3);
+        basePage.radiusButton.click();
+        BrowserUtils.waitForClickablility(basePage.radiusList.get(6),3);
+        basePage.radiusList.get(6).click();
 
     }
 }

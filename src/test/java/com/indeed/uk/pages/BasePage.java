@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class BasePage {
 
     public BasePage() { //Constructor oluşturduk, this:in order to call current class' instance(örnek) of object
@@ -19,6 +21,15 @@ public class BasePage {
 
     @FindBy(xpath = "//button[@class='yosegi-InlineWhatWhere-primaryButton']")
     public WebElement findJobsButton;
+
+    @FindBy(xpath = "//div[@id='searchCountPages']")
+    public WebElement numberOfJobs;
+
+    @FindBy(xpath = "//button[@id='filter-radius']")
+    public WebElement radiusButton;
+
+    @FindBy(xpath = "//ul[@id='filter-radius-menu']//a")
+    public List<WebElement> radiusList;
 
 
 
