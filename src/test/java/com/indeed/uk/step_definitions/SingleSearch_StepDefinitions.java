@@ -18,12 +18,20 @@ public class SingleSearch_StepDefinitions {
     BasePage basePage = new BasePage();
 
     public void closeWindows(){
-        BrowserUtils.waitForVisibility(basePage.acceptAllCookiesButton,4);
-        basePage.acceptAllCookiesButton.click();
-       // BrowserUtils.waitForClickablility(basePage.signInWithGoogleCloseButton,4);
-       // basePage.signInWithGoogleCloseButton.click();
-        BrowserUtils.waitForClickablility(basePage.ukraine,4);
-        basePage.ukraine.click();
+
+        if(BrowserUtils.webElementExists(basePage.acceptAllCookiesButton)){
+            basePage.acceptAllCookiesButton.click();
+        }
+
+        if(BrowserUtils.webElementExists(basePage.ukraine)){
+            basePage.ukraine.click();
+        }
+        if(BrowserUtils.webElementExists(basePage.signInWithGoogleCloseButton)){
+            basePage.signInWithGoogleCloseButton.click();
+        }
+
+
+
 
     }
 
