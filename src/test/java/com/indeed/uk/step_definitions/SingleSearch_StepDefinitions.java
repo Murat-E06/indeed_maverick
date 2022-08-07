@@ -17,23 +17,7 @@ public class SingleSearch_StepDefinitions {
 
     BasePage basePage = new BasePage();
 
-    public void closeWindows(){
 
-        if(BrowserUtils.webElementExists(basePage.acceptAllCookiesButton)){
-            basePage.acceptAllCookiesButton.click();
-        }
-
-        if(BrowserUtils.webElementExists(basePage.ukraine)){
-            basePage.ukraine.click();
-        }
-        if(BrowserUtils.webElementExists(basePage.signInWithGoogleCloseButton)){
-            basePage.signInWithGoogleCloseButton.click();
-        }
-
-
-
-
-    }
 
     @Given("user opens indeed home page")
     public void user_opens_indeed_home_page() {
@@ -71,6 +55,8 @@ public class SingleSearch_StepDefinitions {
         Assert.assertTrue(actualTitle.contains(city.toLowerCase()));
         Assert.assertTrue(actualTitle.contains(job.toLowerCase()));
 
+        basePage.closeWindows();
+
 
     }
 
@@ -85,6 +71,8 @@ public class SingleSearch_StepDefinitions {
 
         Assert.assertTrue(basePage.numberOfJobs.isDisplayed());
         Assert.assertFalse(words[3].startsWith("0"));
+
+        basePage.closeEmailWindow();
 
     }
 
@@ -103,7 +91,7 @@ public class SingleSearch_StepDefinitions {
 
     @Then("user clicks all unnecessary visible windows")
     public void userClicksAllUnnecessaryVisibleWindows() {
-        closeWindows();
+        basePage.closeWindows();
 
     }
 }
