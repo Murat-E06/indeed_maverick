@@ -43,7 +43,8 @@ public class BasePage {
     @FindBy(xpath = "//button[@aria-label='close promo banner']")
     public WebElement ukraine;
 
-    @FindBy(xpath = "//button[@class='popover-x-button-close icl-CloseButton']")
+    //button[@class='popover-x-button-close icl-CloseButton']  (old xpath)
+    @FindBy(xpath = "//*[@id=\"popover-x\"]/button") // new xpath
     public WebElement sendEmailCloseBox;
 
 
