@@ -69,13 +69,11 @@ public class SingleSearch_StepDefinitions {
     @Then("user sees number of job results successfully")
     public void user_sees_number_of_job_results_successfully() {
 
-        String numberOfJobText = basePage.numberOfJobs.getText();//Page 1 of 46 jobs
+        String numberOfJobText = basePage.numberOfJobs.getText();
+        //Page 1 of 12 jobs
+        String [] words = numberOfJobText.split(" ");
 
-        String[] words = numberOfJobText.split(" ");
-        BrowserUtils.waitFor(4);
-        System.out.println(Arrays.toString(words));//[Page, 1, of, 46, jobs]
-
-        System.out.println("Number of jobs = " + words[3]);
+        System.out.println("Number of jobs = " + words[3]);//[Page, 1, of, 46, jobs]
 
         Assert.assertTrue(basePage.numberOfJobs.isDisplayed());
         Assert.assertFalse(words[3].startsWith("0"));
@@ -86,8 +84,12 @@ public class SingleSearch_StepDefinitions {
     public void user_selects_miles_from_dropdown(Integer miles) {
         BrowserUtils.waitFor(3);
         basePage.radiusButton.click();
-        BrowserUtils.waitForClickablility(basePage.radiusList.get(5), 3);//index starts 0
-        basePage.radiusList.get(5).click();
+        //BrowserUtils.waitForClickablility(basePage.radiusList.get(6),3);
+        //basePage.radiusList.get(6).click();
+
+        System.out.println("miles = " + miles);
+        BrowserUtils.waitForClickablility(basePage.getRadiusFilter(miles),3);
+        basePage.getRadiusFilter(miles).click();
 
     }
 
