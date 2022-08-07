@@ -11,10 +11,21 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import javax.swing.text.Utilities;
+import java.util.Arrays;
 
 public class SingleSearch_StepDefinitions {
 
-    BasePage basePage=new BasePage();
+    BasePage basePage = new BasePage();
+
+    public void closeWindows(){
+        BrowserUtils.waitForVisibility(basePage.acceptAllCookiesButton,4);
+        basePage.acceptAllCookiesButton.click();
+       // BrowserUtils.waitForClickablility(basePage.signInWithGoogleCloseButton,4);
+       // basePage.signInWithGoogleCloseButton.click();
+        BrowserUtils.waitForClickablility(basePage.ukraine,4);
+        basePage.ukraine.click();
+
+    }
 
     @Given("user opens indeed home page")
     public void user_opens_indeed_home_page() {
@@ -28,7 +39,7 @@ public class SingleSearch_StepDefinitions {
     public void userInputsToWhatAndToWhereBoxes(String job, String city) {
         basePage.whatBox.sendKeys(job);
         BrowserUtils.waitFor(3);
-       // String expectedTitle=job+" job in "+city;
+        // String expectedTitle=job+" job in "+city;
 
         basePage.whereBox.sendKeys(city);
         BrowserUtils.waitFor(3);
@@ -44,12 +55,13 @@ public class SingleSearch_StepDefinitions {
 
     @Then("user sees {string} and {string} results successfully")
     public void userSeesAndResultsSuccessfully(String job, String city) {
-       String actualTitle=Driver.getDriver().getTitle().toLowerCase();
-       System.out.println("actualTitle = " + actualTitle);
-       BrowserUtils.waitFor(3);
 
-       Assert.assertTrue(actualTitle.contains(city.toLowerCase()));
-       Assert.assertTrue(actualTitle.contains(job.toLowerCase()));
+        String actualTitle = Driver.getDriver().getTitle().toLowerCase();
+        System.out.println("actualTitle = " + actualTitle);
+        BrowserUtils.waitFor(3);
+
+        Assert.assertTrue(actualTitle.contains(city.toLowerCase()));
+        Assert.assertTrue(actualTitle.contains(job.toLowerCase()));
 
 
     }
@@ -57,9 +69,11 @@ public class SingleSearch_StepDefinitions {
     @Then("user sees number of job results successfully")
     public void user_sees_number_of_job_results_successfully() {
 
-        String numberOfJobText = basePage.numberOfJobs.getText();
-        //Page 1 of 12 jobs
-        String [] words = numberOfJobText.split(" ");
+        String numberOfJobText = basePage.numberOfJobs.getText();//Page 1 of 46 jobs
+
+        String[] words = numberOfJobText.split(" ");
+        BrowserUtils.waitFor(4);
+        System.out.println(Arrays.toString(words));//[Page, 1, of, 46, jobs]
 
         System.out.println("Number of jobs = " + words[3]);
 
@@ -72,8 +86,14 @@ public class SingleSearch_StepDefinitions {
     public void user_selects_miles_from_dropdown(Integer miles) {
         BrowserUtils.waitFor(3);
         basePage.radiusButton.click();
-        BrowserUtils.waitForClickablility(basePage.radiusList.get(6),3);
-        basePage.radiusList.get(6).click();
+        BrowserUtils.waitForClickablility(basePage.radiusList.get(5), 3);//index starts 0
+        basePage.radiusList.get(5).click();
+
+    }
+
+    @Then("user clicks all unnecessary visible windows")
+    public void userClicksAllUnnecessaryVisibleWindows() {
+        closeWindows();
 
     }
 }

@@ -31,6 +31,17 @@ public class BasePage {
     @FindBy(xpath = "//ul[@id='filter-radius-menu']//a")
     public List<WebElement> radiusList;
 
+    //Day 3 Locators
+
+    @FindBy(xpath = "//button[@class='icl-CloseButton icl-Card-close']")
+    public WebElement signInWithGoogleCloseButton;
+
+    @FindBy(xpath = "//button[@id='onetrust-accept-btn-handler']")
+    public WebElement acceptAllCookiesButton;
+
+    @FindBy(xpath = "//button[@aria-label='close promo banner']")
+    public WebElement ukraine;
+
 
 
 
