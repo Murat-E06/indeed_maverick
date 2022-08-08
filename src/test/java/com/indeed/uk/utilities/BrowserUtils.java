@@ -540,4 +540,17 @@ for given duration
             Driver.timeout(10,"s");
         }
     }
+
+    public static Boolean webElementExists(List<WebElement> elementList){
+        Driver.timeout(0,"s");
+        try{
+            elementList.get(0).isDisplayed();
+            return true;
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            Driver.timeout(10,"s");
+        }
+    }
 }
