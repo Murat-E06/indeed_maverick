@@ -29,10 +29,11 @@ public class SingleSearch_StepDefinitions {
 
     @When("user inputs {string} to What and {string} to Where boxes")
     public void userInputsToWhatAndToWhereBoxes(String job, String city) {
+        basePage.whatBox.clear();
         basePage.whatBox.sendKeys(job);
         BrowserUtils.waitFor(3);
         // String expectedTitle=job+" job in "+city;
-
+        basePage.whereBox.clear();
         basePage.whereBox.sendKeys(city);
         BrowserUtils.waitFor(3);
     }
