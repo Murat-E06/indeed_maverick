@@ -6,8 +6,7 @@ import io.cucumber.java.en.Then;
 
 public class JobList_StepDefinitions {
 
-    JobDetailPage jobDetailPage=new JobDetailPage();
-
+    JobDetailPage jobDetailPage = new JobDetailPage();
 
 
     @Then("user gets the list of jobs")
@@ -16,11 +15,20 @@ public class JobList_StepDefinitions {
         jobDetailPage.closeEmailWindow();
 
         BrowserUtils.waitFor(10);
-        String result=jobDetailPage.getTextOfElements(jobDetailPage.jobLists);
+        String result = jobDetailPage.getTextOfElements(jobDetailPage.jobList);
         System.out.println("result = " + result);
 
     }
 
+    @Then("user clicks pages number buttons and get all list of jobs")
+    public void userClicksPagesNumberButtonsAndGetAllListOfJobs() {
+        jobDetailPage.closeEmailWindow();
+
+      String result= jobDetailPage.getTextOfAllPagesElements(jobDetailPage.pageNumberList);
+       System.out.println("result all pages = " + result);
+
+
+    }
 
 
 }
