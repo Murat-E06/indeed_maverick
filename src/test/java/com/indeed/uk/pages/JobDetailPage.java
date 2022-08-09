@@ -2,6 +2,7 @@ package com.indeed.uk.pages;
 
 import com.indeed.uk.utilities.BrowserUtils;
 import com.indeed.uk.utilities.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -37,22 +38,59 @@ public class JobDetailPage extends BasePage {
         String allElements = "";
 
         if (BrowserUtils.webElementExists(pageNumberList)) {
-            for (int i = 0; i < pageNumberList.size(); i++) {
+            for (int i = 1; i < pageNumberList.size(); i++) { // changed
 
                 BrowserUtils.waitFor(10);
                 allElements += getTextOfElements(jobList);
+                System.out.println("allElements  with " + i + " page= " + allElements);
 
-                BrowserUtils.waitFor(5);
-                pageNumberList.get(i).click();
+                BrowserUtils.waitFor(10); // changed rom 5 to 10
+
+                pageNumberList.get(pageNumberList.size() - 1).click();  // click last one > next button
 
             }
         } else {
             BrowserUtils.waitFor(10);
             allElements += getTextOfElements(jobList);
+            System.out.println("allElements  only one page= " + allElements);
 
         }
         return allElements;
     }
 
+    public String getTextOfAllPagesWithWhileLoop(List<WebElement> elements) {
 
+        String allElements = "";
+
+        // gets names of the jobs from first page
+        BrowserUtils.waitFor(10);
+        allElements += getTextOfElements(jobList);
+        System.out.println("allElements  first page= " + allElements);
+
+        // gets names from other pages if any
+        if ((BrowserUtils.webElementExists(pageNumberList))) {
+
+            int i = 2; // starting from page to
+
+            int numberOfPages = pageNumberList.size(); // ending last page
+
+            while (i <= numberOfPages ){
+
+                // Javascript executor
+                //((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+
+                BrowserUtils.waitFor(10);
+                // last element is  (next) > button which has the index of size-1
+                pageNumberList.get(numberOfPages-1).click();
+
+                BrowserUtils.waitFor(10);
+                allElements += getTextOfElements(jobList);
+                System.out.println("allElements  with " + ++i + " page= " + allElements);
+
+            }
+        }
+
+        return allElements;
+    }
 }
