@@ -24,8 +24,9 @@ public class JobList_StepDefinitions {
     public void userClicksPagesNumberButtonsAndGetAllListOfJobs() {
         jobDetailPage.closeEmailWindow();
 
-      String result= jobDetailPage.getTextOfAllPagesElements(jobDetailPage.pageNumberList);
-       System.out.println("result all pages = " + result);
+        String result= jobDetailPage.getTextOfAllPagesElements(jobDetailPage.pageNumberList);
+        //String result= jobDetailPage.getTextOfAllPagesWithWhileLoop(jobDetailPage.pageNumberList);
+        System.out.println("result all pages = " + result);
 
 
     }
