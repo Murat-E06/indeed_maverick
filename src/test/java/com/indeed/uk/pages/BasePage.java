@@ -77,6 +77,7 @@ public class BasePage {
 
     public void closeWindows() {
 
+
         if (BrowserUtils.webElementExists(acceptAllCookiesButton)) {
             acceptAllCookiesButton.click();
         }
@@ -90,7 +91,9 @@ public class BasePage {
     }
 
     public void closeEmailWindow() {
+        BrowserUtils.waitFor(10);
         if (BrowserUtils.webElementExists(sendEmailCloseBox)) {
+            BrowserUtils.waitForClickablility(sendEmailCloseBox,5);
             sendEmailCloseBox.click();
         }
     }

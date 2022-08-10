@@ -4,9 +4,6 @@ Feature: User wants to search single job
     Given user opens indeed home page
     Then user clicks all unnecessary visible windows
 
-
-
-
   Scenario: User can successfully search a single job
     When user inputs "qa tester" to What and "Liverpool" to Where boxes
     And user clicks Find jobs button
