@@ -11,8 +11,7 @@ public class JobList_StepDefinitions {
 
     @Then("user gets the list of jobs")
     public void user_gets_the_list_of_jobs() {
-
-        jobDetailPage.closeEmailWindow();
+       // jobDetailPage.closeEmailWindow();
 
         BrowserUtils.waitFor(10);
         String result = jobDetailPage.getTextOfElements(jobDetailPage.jobList);
@@ -22,7 +21,7 @@ public class JobList_StepDefinitions {
 
     @Then("user clicks pages number buttons and get all list of jobs")
     public void userClicksPagesNumberButtonsAndGetAllListOfJobs() {
-        jobDetailPage.closeEmailWindow();
+       jobDetailPage.closeEmailWindow();
 
         String result= jobDetailPage.getTextOfAllPagesElements(jobDetailPage.pageNumberList);
         //String result= jobDetailPage.getTextOfAllPagesWithWhileLoop(jobDetailPage.pageNumberList);

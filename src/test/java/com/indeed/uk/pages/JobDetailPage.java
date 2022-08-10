@@ -21,6 +21,19 @@ public class JobDetailPage extends BasePage {
     @FindBy(xpath = "//ul[@class='pagination-list']/li/a")
     public List<WebElement> pageNumberList;
 
+    //job details locators
+
+    @FindBy(xpath = "//div[@class='jobsearch-JobInfoHeader-title-container ']/h1")
+    public WebElement jobDetailName;
+
+    @FindBy(xpath = "//div[@id='salaryInfoAndJobType']")
+    public WebElement jobDetailSalary;
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
     public String getTextOfElement(WebElement element) {
         return element.getText();
     }
@@ -42,11 +55,12 @@ public class JobDetailPage extends BasePage {
 
                 BrowserUtils.waitFor(10);
                 allElements += getTextOfElements(jobList);
-                System.out.println("allElements  with " + i + " page= " + allElements);
+                System.out.println("allElements  with " + i + " page:\n " + allElements);
 
                 BrowserUtils.waitFor(10); // changed rom 5 to 10
-
+                BrowserUtils.waitForClickablility(pageNumberList.get(0),10);
                 pageNumberList.get(pageNumberList.size() - 1).click();  // click last one > next button
+
 
             }
         } else {
