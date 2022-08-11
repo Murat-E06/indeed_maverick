@@ -20,6 +20,12 @@ public class JobDetail_StepDefinitions {
 
  */
         BrowserUtils.waitFor(10);
+
+        jobDetailPage.firstPageJobBoxesAreas.get(2).click();
+       // BrowserUtils.webElementExists(jobDetailPage.jobDescriptionTextList);
+       // String text = jobDetailPage.getTextOfElements(jobDetailPage.jobDescriptionTextList);
+      //  System.out.println("text = " + text);
+
         if(BrowserUtils.webElementExists(jobDetailPage.jobDetailSalary)){
             String salary = jobDetailPage.getTextOfElement(jobDetailPage.jobDetailSalary);
             System.out.println("salary = " + salary);

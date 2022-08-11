@@ -29,6 +29,18 @@ public class JobDetailPage extends BasePage {
     @FindBy(xpath = "//div[@id='salaryInfoAndJobType']")
     public WebElement jobDetailSalary;
 
+    /////////////////////////////////////////////////////////
+
+
+    @FindBy(xpath = "//div[@class='job_seen_beacon']")
+    public List<WebElement> firstPageJobBoxesAreas;
+
+    @FindBy(xpath = "//div[@id='jobDescriptionText']")
+    public WebElement jobDescriptionText;
+
+    @FindBy(xpath = "//div[@id='jobDescriptionText']/b")
+    public List<WebElement> jobDescriptionTextList;
+
 
 
 
