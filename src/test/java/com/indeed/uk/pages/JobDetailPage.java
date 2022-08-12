@@ -41,6 +41,9 @@ public class JobDetailPage extends BasePage {
     @FindBy(xpath = "//div[@id='jobDescriptionText']/b")
     public List<WebElement> jobDescriptionTextList;
 
+    @FindBy(xpath = "//div[@class='metadata salary-snippet-container']")
+    public List<WebElement> salaryList;
+
 
 
 

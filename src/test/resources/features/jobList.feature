@@ -28,13 +28,27 @@ Feature: User wants to search  job list
       | job       | city      |
       | qa tester | Liverpool |
 
-    @wip
+
     Scenario Outline: User can successfully store jobs in Map format
     Given user opens indeed home page
     When user inputs "<job>" to What and "<city>" to Where boxes
     And user clicks Find jobs button
     And user gets the list of jobs
     Then user gets the list of the jobs in Map format
+
+
+    Examples:
+      | job       | city   |
+      | qa tester | London |
+
+  @wip
+  Scenario Outline: User can successfully store jobs in Map format
+    Given user opens indeed home page
+    When user inputs "<job>" to What and "<city>" to Where boxes
+    And user clicks Find jobs button
+    And user gets the list of jobs
+    And user gets the list of the jobs in Map format
+    Then user gets the list of the job from data base
 
 
     Examples:
