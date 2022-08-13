@@ -3,7 +3,9 @@ package com.indeed.uk.step_definitions;
 import com.indeed.uk.pages.JobDetailPage;
 import com.indeed.uk.utilities.BrowserUtils;
 import com.indeed.uk.utilities.ConfigurationReader;
+import com.indeed.uk.utilities.DBUtils;
 import io.cucumber.java.en.Then;
+import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
 import java.sql.*;
@@ -19,7 +21,7 @@ public class JobList_StepDefinitions {
 
     JobDetailPage jobDetailPage = new JobDetailPage();
 
-    String dbURL= ConfigurationReader.getProperty("dbURL");
+    String dbUrl= ConfigurationReader.getProperty("dbUrl");
     String dbUsername= ConfigurationReader.getProperty("dbUsername");
     String dbPassword= ConfigurationReader.getProperty("dbPassword");
 
@@ -80,9 +82,9 @@ public class JobList_StepDefinitions {
     public void userGetsTheListOfTheJobFromDataBase() throws SQLException {
 
         // CREATE CONNECTION
-        Connection connection = DriverManager.getConnection(dbURL,dbUsername,dbPassword);
+        Connection connection = DriverManager.getConnection(dbUrl,dbUsername,dbPassword);
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from \"jobs_UK\"");
+        ResultSet resultSet = statement.executeQuery("select * from INDEED_JOBS");
 
         System.out.println("connection...");
 
@@ -92,6 +94,9 @@ public class JobList_StepDefinitions {
                     + " - "+resultSet.getString(2)
                     + " - "+resultSet.getString(3));
         }
+
+        List<Map<String, Object>> resultMap = DBUtils.getQueryResultMap("select * from INDEED_JOBS");
+        System.out.println("resultMap = \n" + resultMap);
 
         /*
         //in order to get column names we need resultsetmetadata
@@ -122,7 +127,19 @@ public class JobList_StepDefinitions {
         resultSet.close();
         statement.close();
         connection.close();
+    }
 
+    @Test
+    public void test1(){
+        DBUtils.createConnection();
+        String query = "select * from INDEED_JOBS";
+        List<Map<String, Object>> queryData = DBUtils.getQueryResultMap(query);
+
+        for (Map<String, Object> each : queryData) {
+            System.out.println(each.toString());
+        }
+
+        DBUtils.destroy();
 
     }
 }
