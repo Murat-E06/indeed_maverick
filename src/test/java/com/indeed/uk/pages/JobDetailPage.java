@@ -45,6 +45,8 @@ public class JobDetailPage extends BasePage {
     public List<WebElement> salaryList;
 
 
+    @FindBy (xpath = "//div[@id='salaryInfoAndJobType']/span")
+    public List<WebElement> jobDetailSalaryAll;
 
 
 
@@ -56,7 +58,7 @@ public class JobDetailPage extends BasePage {
     public String getTextOfElements(List<WebElement> elements) {
         String result = "";
         for (WebElement each : elements) {
-            result += getTextOfElement(each) + "\n";
+            result += each.getText() + "\n";
         }
         return result;
     }

@@ -4,6 +4,7 @@ import com.indeed.uk.pages.JobDetailPage;
 import com.indeed.uk.utilities.BrowserUtils;
 import com.indeed.uk.utilities.ConfigurationReader;
 import com.indeed.uk.utilities.DBUtils;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
@@ -140,6 +141,22 @@ public class JobList_StepDefinitions {
         }
 
         DBUtils.destroy();
+
+    }
+
+    //public void test2()
+    @Given("user reads the list of the job from data base")
+    public void userReadsTheListOfTheJobFromDataBase() {
+
+        //DBUtils.createConnection();
+        String query = "select * from INDEED_JOBS";
+        List<Map<String, Object>> queryData = DBUtils.getQueryResultMap(query);
+
+        for (Map<String, Object> each : queryData) {
+            System.out.println(each.toString());
+        }
+
+        //DBUtils.destroy();
 
     }
 }
