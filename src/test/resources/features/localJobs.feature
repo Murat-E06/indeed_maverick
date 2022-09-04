@@ -4,15 +4,14 @@ Feature: User wants to search remote  job list
     Given user opens indeed home page
     Then user clicks all unnecessary visible windows
 
-@remote
+  @local
   Scenario Outline: User can successfully search a single job
     Given user opens indeed home page
-    When user inputs "<job>" to What box
+    When user inputs "<job>" to What and "<city>" to Where boxes
     And user clicks Find jobs button
-    And user selects remote jobs
-    Then user puts the list of jobs to excel
+    Then user puts the list of local jobs to excel
 
     Examples:
-      | job |
-      | SDET  |
+      | job       | city   |
+      | QA | Ankara |
 

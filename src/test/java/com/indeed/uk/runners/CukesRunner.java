@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features"},
         glue = {"com/indeed/uk/step_definitions"},
         dryRun = false,
-        tags = "@remote"
+        tags = "@local"
 )
 
 public class CukesRunner {
