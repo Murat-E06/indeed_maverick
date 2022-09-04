@@ -37,9 +37,9 @@ public class RemoteJobs_StepDefinitions {
         remoteDetailPage.closeEmailWindow();
 
         BrowserUtils.waitFor(10);
-        remoteDetailPage.putTextOfAllPagestoExcel(remoteDetailPage.jobList);
+        remoteDetailPage.putTextOfAllPagestoExcel(remoteDetailPage.jobList,"jobList.xlsx");
         BrowserUtils.waitFor(10);
-        remoteDetailPage.printExcel(3);
+        remoteDetailPage.printExcel("jobList.xlsx",3);
 
     }
 }

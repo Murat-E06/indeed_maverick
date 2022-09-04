@@ -36,10 +36,10 @@ public class RemoteDetailPage extends JobDetailPage {
 
     //print excel list
     @Test
-    public void printExcel(int pageNumber) {
+    public void printExcel(String fileName, int pageNumber) {
         for (int i = 1; i <= pageNumber; i++) {
 
-            ExcelUtil excelFile = new ExcelUtil("src/test/resources/data/jobList.xlsx", "Page"+i);
+            ExcelUtil excelFile = new ExcelUtil("src/test/resources/data/"+fileName, "Page"+i);
 
             System.out.println("Printing page "+i);
 
@@ -52,9 +52,9 @@ public class RemoteDetailPage extends JobDetailPage {
     }
 
     // put given list to excel
-    public void putTexttoExcel(List<WebElement> elements, String columnName, String page) {
+    public void putTexttoExcel(List<WebElement> elements, String fileName,String columnName, String page) {
 
-        ExcelUtil excelFile = new ExcelUtil("src/test/resources/data/jobList.xlsx", page);
+        ExcelUtil excelFile = new ExcelUtil("src/test/resources/data/"+fileName, page);
 
         for (int i = 0; i < elements.size(); i++) {
             String text;
@@ -70,15 +70,15 @@ public class RemoteDetailPage extends JobDetailPage {
     }
 
     // Check all pages and puts them in excel
-    public void putTextOfAllPagestoExcel(List<WebElement> elements) {
+    public void putTextOfAllPagestoExcel(List<WebElement> elements, String fileName) {
 
         if (BrowserUtils.webElementExists(pageNumberList)) {
             for (int i = 1; i < pageNumberList.size(); i++) { // changed
 
                 BrowserUtils.waitFor(10);
-                putTexttoExcel(jobList, "Name", "Page" + i);
+                putTexttoExcel(jobList, fileName,"Name", "Page" + i);
 
-                putTexttoExcel(jobLinks, "List", "Page" + i);
+                putTexttoExcel(jobLinks, fileName,"List", "Page" + i);
 
 
                 BrowserUtils.waitFor(10); // changed rom 5 to 10
@@ -88,8 +88,8 @@ public class RemoteDetailPage extends JobDetailPage {
             }
         } else {
             BrowserUtils.waitFor(10);
-            putTexttoExcel(jobList, "Name", "Page1");
-            putTexttoExcel(jobLinks, "List", "Page1");
+            putTexttoExcel(jobList, fileName,"Name", "Page1");
+            putTexttoExcel(jobLinks, fileName,"List", "Page1");
 
         }
     }
