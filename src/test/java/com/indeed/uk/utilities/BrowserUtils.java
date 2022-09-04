@@ -544,7 +544,19 @@ for given duration
     public static Boolean webElementExists(List<WebElement> elementList){
         Driver.timeout(0,"s");
         try{
-            elementList.get(0).isDisplayed();
+            if (elementList!=null) {
+                System.out.println("WebElement in the list");
+                String result = "";
+                int count = 0;
+
+
+                for (WebElement each : elementList) {
+                    System.out.println("count = " + count++);
+                    result += each.getText() + "\n";
+                }
+                //System.out.println("result from existing = " + result);
+            }
+            // elementList.get(0).isDisplayed();
             return true;
         }catch (NoSuchElementException e){
             e.printStackTrace();

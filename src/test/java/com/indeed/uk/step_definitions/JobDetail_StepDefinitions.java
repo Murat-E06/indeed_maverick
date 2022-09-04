@@ -18,7 +18,7 @@ public class JobDetail_StepDefinitions {
         String jobDetailNameText = jobDetailPage.getTextOfElement(jobDetailPage.jobDetailName);
         System.out.println("jobDetailNameText = " + jobDetailNameText);
 
- */
+
         BrowserUtils.waitFor(10);
 
         jobDetailPage.firstPageJobBoxesAreas.get(2).click();
@@ -32,7 +32,14 @@ public class JobDetail_StepDefinitions {
         }else{
             System.out.println("No salary info");
         }
-
+*/
+        BrowserUtils.waitFor(10);
+        if(BrowserUtils.webElementExists(jobDetailPage.jobDetailSalaryAll)){
+            String salary = jobDetailPage.getTextOfElements(jobDetailPage.jobDetailSalaryAll);
+            System.out.println("salary = " + salary);
+        }else{
+            System.out.println("No salary info for elements method");
+        }
 
 
 
