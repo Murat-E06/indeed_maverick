@@ -72,7 +72,8 @@ public class RemoteDetailPage extends JobDetailPage {
     // Check all pages and puts them in excel
     public void putTextOfAllPagestoExcel(List<WebElement> elements, String fileName) {
 
-        if (BrowserUtils.webElementExists(pageNumberList)) {
+        if (BrowserUtils.webElementExists(pageNumberList)&&pageNumberList.size()>1) {
+            System.out.println("multiple pages at "+ fileName);
             for (int i = 1; i < pageNumberList.size(); i++) { // changed
 
                 BrowserUtils.waitFor(10);
@@ -80,7 +81,7 @@ public class RemoteDetailPage extends JobDetailPage {
 
                 putTexttoExcel(jobLinks, fileName,"List", "Page" + i);
 
-
+                System.out.println("putting page "+i);
                 BrowserUtils.waitFor(10); // changed rom 5 to 10
                 BrowserUtils.waitForClickablility(pageNumberList.get(0), 10);
                 pageNumberList.get(pageNumberList.size() - 1).click();  // click last one > next button
@@ -88,6 +89,7 @@ public class RemoteDetailPage extends JobDetailPage {
             }
         } else {
             BrowserUtils.waitFor(10);
+            System.out.println("single page at "+ fileName);
             putTexttoExcel(jobList, fileName,"Name", "Page1");
             putTexttoExcel(jobLinks, fileName,"List", "Page1");
 

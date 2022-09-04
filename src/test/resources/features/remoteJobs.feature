@@ -14,5 +14,5 @@ Feature: User wants to search remote  job list
 
     Examples:
       | job |
-      | QA Tester  |
+      | SDET  |
 
