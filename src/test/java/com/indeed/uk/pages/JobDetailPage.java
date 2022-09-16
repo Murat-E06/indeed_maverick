@@ -2,7 +2,6 @@ package com.indeed.uk.pages;
 
 import com.indeed.uk.utilities.BrowserUtils;
 import com.indeed.uk.utilities.Driver;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

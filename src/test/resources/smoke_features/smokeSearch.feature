@@ -12,7 +12,7 @@ Feature: User wants to search single job
 
     Examples:
       | job       | city      |
-      | qa tester | Liverpool |
+      | QA | Ankara |
 
 
 

@@ -10,9 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-import javax.swing.text.Utilities;
-import java.util.Arrays;
-
 public class SingleSearch_StepDefinitions {
 
     BasePage basePage = new BasePage();
@@ -21,7 +18,7 @@ public class SingleSearch_StepDefinitions {
 
     @Given("user opens indeed home page")
     public void user_opens_indeed_home_page() {
-        Driver.getDriver().get("https://uk.indeed.com/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         BrowserUtils.waitFor(3);
 
 
