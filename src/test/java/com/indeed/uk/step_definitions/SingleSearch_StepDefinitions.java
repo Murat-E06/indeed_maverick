@@ -10,9 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-import javax.swing.text.Utilities;
-import java.util.Arrays;
-
 public class SingleSearch_StepDefinitions {
 
     BasePage basePage = new BasePage();
@@ -21,7 +18,7 @@ public class SingleSearch_StepDefinitions {
 
     @Given("user opens indeed home page")
     public void user_opens_indeed_home_page() {
-        Driver.getDriver().get("https://uk.indeed.com/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         BrowserUtils.waitFor(3);
 
 
@@ -29,6 +26,7 @@ public class SingleSearch_StepDefinitions {
 
     @When("user inputs {string} to What and {string} to Where boxes")
     public void userInputsToWhatAndToWhereBoxes(String job, String city) {
+        BrowserUtils.waitForVisibility(basePage.whatBox,5);
         basePage.whatBox.clear();
         basePage.whatBox.sendKeys(job);
         BrowserUtils.waitFor(3);

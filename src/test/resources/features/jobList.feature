@@ -39,7 +39,7 @@ Feature: User wants to search  job list
 
     Examples:
       | job       | city   |
-      | qa tester | London |
+      | QA        | Ankara |
 
 
   Scenario Outline: User can successfully store jobs in Map format
