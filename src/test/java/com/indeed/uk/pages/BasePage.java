@@ -29,8 +29,10 @@ public class BasePage {
     @FindBy(xpath = "//button[@id='filter-radius']")
     public WebElement radiusButton;
 
+
     @FindBy(xpath = "//ul[@id='filter-radius-menu']//a")
     public List<WebElement> radiusList;
+
 
     //Day 3 Locators
 
@@ -46,7 +48,6 @@ public class BasePage {
     //button[@class='popover-x-button-close icl-CloseButton']  (old xpath)
     @FindBy(xpath = "//*[@id=\"popover-x\"]/button") // new xpath
     public WebElement sendEmailCloseBox;
-
 
 
 
